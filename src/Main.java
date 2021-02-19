@@ -94,7 +94,7 @@ public class Main {
         romansSet.add("X");
 
         if (!(romansSet.contains(leftSide) && romansSet.contains(rightSide))) {
-            System.out.println("Ошибка. Введенные символы должны быть арабскими или римскими числами от 1(I) до 10(X)");
+            System.out.println("Ошибка. Числа должны быть арабскими или римскими от 1(I) до 10(X)");
             throw new Exception();
         }
 
