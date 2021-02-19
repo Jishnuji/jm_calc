@@ -11,7 +11,6 @@ public class Main {
         text = text.trim();
 /** Извлекаем знак арифметического действия и проверяем, чтобы он был один**/
         char sign = ' ';
-
         int plus = 0, minus = 0, mult = 0, div = 0;
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == '+') {
@@ -37,7 +36,7 @@ public class Main {
             System.out.println("Ошибка. В примере должна быть указан один знак арифметического действия");
             throw new Exception();
         }
-
+/** Ищем числа слева и справа от знака арфметического действия*/
         int indexOfSign = text.indexOf(sign);
         String leftSide = text.substring(0, indexOfSign);
         leftSide = leftSide.trim();
@@ -45,10 +44,10 @@ public class Main {
         rightSide = rightSide.trim();
 
         if (leftSide.indexOf(' ') != -1 || rightSide.indexOf(' ') != -1) {
-            System.out.println("Ошибка. Должны быть введены только два числа");
+            System.out.println("Ошибка. Должны быть введены ровно два числа");
             throw new Exception();
         }
-
+/** Проверяем на наличие арабских чисел*/
         boolean arabic = false;
         int a = 0, b = 0;
 
@@ -59,7 +58,7 @@ public class Main {
             arabic = true;
 
         } catch (NumberFormatException e) { }
-
+/** Проверяем, входят ли числа в требуемый диапазон. Если да, то вызываем соответсвующий метод арифметического вычисления*/
         if (arabic) {
             if (a > 10 || a < 1 || b > 10 || b < 1) {
                 System.out.println("Ошибка. Число должно быть от 1 до 10");
@@ -81,7 +80,7 @@ public class Main {
             }
             System.exit(0);
         }
-
+/** Проверяем на наличие римских чисел*/
         Set<String> romansSet = new HashSet<>();
         romansSet.add("I");
         romansSet.add("II");
@@ -95,13 +94,13 @@ public class Main {
         romansSet.add("X");
 
         if (!(romansSet.contains(leftSide) && romansSet.contains(rightSide))) {
-            System.out.println("Ошибка. Введенные символы Должны быть арабскими, римскими числами от I до X");
+            System.out.println("Ошибка. Введенные символы должны быть римскими числами от I до X");
             throw new Exception();
         }
 
         String a2 = leftSide;
         String b2 = rightSide;
-
+/** Выполняем арифметическое действие с римскими цифрами*/
         switch (sign) {
             case '+' -> System.out.println(Arithmetic.sum(a2, b2));
             case '-' -> System.out.println(Arithmetic.subtract(a2, b2));
