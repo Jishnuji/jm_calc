@@ -26,13 +26,12 @@ public class Arithmetic {
     }};
 
     /** Конвертируем полученный результат в римскую цифру */
-    private static String toRoman(int n) {
+    private static String toRoman(int n) throws Exception {
         StringBuilder result = new StringBuilder();
 
-        boolean negative = false;
-        if (n < 0) {
-            n = -n;
-            negative = true;
+        if (n <= 0) {
+            System.out.println("В римских цифрах нет нуля и отрицательных значений");
+            throw new Exception();
         }
 
         while (n > 0) {
@@ -43,10 +42,6 @@ public class Arithmetic {
                     break;
                 }
             }
-        }
-
-        if (negative) {
-            result.insert(0,"-");
         }
         return result.toString();
     }
@@ -64,31 +59,27 @@ public class Arithmetic {
         return a / b;
     }
     /** Выполняем арифметические действия с римскими числами */
-    public static String sum(String a, String b) {
+    public static String sum(String a, String b) throws Exception {
         int a2 = map2.get(a);
         int b2 = map2.get(b);
-
         int s = sum(a2, b2);
         return toRoman(s);
     }
-    public static String subtract(String a, String b) {
+    public static String subtract(String a, String b) throws Exception {
         int a2 = map2.get(a);
         int b2 = map2.get(b);
-
         int s = subtract(a2, b2);
         return toRoman(s);
     }
-    public static String multiplay(String a, String b) {
+    public static String multiplay(String a, String b) throws Exception {
         int a2 = map2.get(a);
         int b2 = map2.get(b);
-
         int s = multiplay(a2, b2);
         return toRoman(s);
     }
-    public static String divide(String a, String b) {
+    public static String divide(String a, String b) throws Exception {
         int a2 = map2.get(a);
         int b2 = map2.get(b);
-
         int s = divide(a2, b2);
         return toRoman(s);
     }
